@@ -3,5 +3,5 @@
 
 class EmailNotification : public Notification {
 public:
-    void send(std::string message) override;
+  void send(std::string message) override;
 };
