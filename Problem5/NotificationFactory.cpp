@@ -7,7 +7,7 @@
 #include <stdexcept>
 
 // returns the appropriate Notification subclass based on the channelType.
-static std::unique_ptr<Notification> createNotification(NotificationChannelType channelType) {
+std::unique_ptr<Notification> NotificationFactory::createNotification(NotificationChannelType channelType) {
   switch (channelType) {
   case NotificationChannelType::EMAIL:
     return std::make_unique<EmailNotification>();
