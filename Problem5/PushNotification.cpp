@@ -2,5 +2,5 @@
 #include "iostream"
 
 void PushNotification::send(std::string message) {
-  std::cout << "Hello by push" << std::endl;
+  std::cout << message << " by push" << std::endl;
 }

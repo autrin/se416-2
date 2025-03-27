@@ -2,5 +2,5 @@
 #include "iostream"
 
 void SMSNotification::send(std::string message) {
-  std::cout << "Hello by sms" << std::endl;
+  std::cout <<  message << "Hello by sms" << std::endl;
 }
