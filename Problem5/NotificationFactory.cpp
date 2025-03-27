@@ -4,6 +4,7 @@
 #include "NotificationChannelType.hpp"
 #include "PushNotification.hpp"
 #include "SMSNotification.hpp"
+#include <stdexcept>
 
 // returns the appropriate Notification subclass based on the channelType.
 static std::unique_ptr<Notification> createNotification(NotificationChannelType channelType) {
@@ -15,6 +16,6 @@ static std::unique_ptr<Notification> createNotification(NotificationChannelType 
   case NotificationChannelType::PUSH:
     return std::make_unique<PushNotification>();
   default:
-    return nullptr; // TODO: handle this
+    throw std::invalid_argument("Unknown notification channel type");
   }
 }
