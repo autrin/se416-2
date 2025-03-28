@@ -1,17 +1,30 @@
-public class Main {
+public class AppCacheDemo {
     public static void main(String[] args) {
-        AppCache cache = AppCache.getInstance();
+        AppCache cache = AppCache.getInstance(); // Get Singleton Instance
 
-        // Create sample objects
-        EnhancementId enhancementId = new EnhancementId(101);
-        ConfigurationData configData = new ConfigurationData("ConfigA");
+        EnhancementId id1 = new EnhancementId("Feature1");
+        ConfigurationData config1 = new ConfigurationData("High Performance");
 
-        // Add data to the cache
-        cache.set(enhancementId, configData);
+        cache.set(id1, config1);
 
-        // Retrieve data from the cache
-        ConfigurationData retrievedData = cache.get(enhancementId);
-
-        System.out.println("Retrieved Configuration: " + retrievedData.getName());
+        ConfigurationData retrievedConfig = cache.get(id1);
+        System.out.println("Retrieved Configuration: " + retrievedConfig.getValue());
     }
 }
+
+// Example supporting classes
+class EnhancementId {
+    private String id;
+    public EnhancementId(String id) { this.id = id; }
+    @Override
+    public int hashCode() { return id.hashCode(); }
+    @Override
+    public boolean equals(Object obj) { return obj instanceof EnhancementId && this.id.equals(((EnhancementId) obj).id); }
+}
+
+class ConfigurationData {
+    private String value;
+    public ConfigurationData(String value) { this.value = value; }
+    public String getValue() { return value; }
+}
+
